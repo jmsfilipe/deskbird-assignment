@@ -10,6 +10,7 @@ import { UserEffects } from './user/state/user.effects';
 import { provideHttpClient } from "@angular/common/http";
 import { authReducer } from './auth/state/auth.reducer';
 import { userReducer } from './user/state/user.reducer';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // Create a meta-reducer for local storage synchronization
 export function localStorageSyncReducer(reducer: any): any {
@@ -25,6 +26,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideStore({ auth: authReducer, users: userReducer }, { metaReducers: [localStorageSyncReducer] }),
-    provideEffects([AuthEffects, UserEffects])
+    provideEffects([AuthEffects, UserEffects]), provideAnimationsAsync()
   ]
 };
