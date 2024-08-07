@@ -1,0 +1,49 @@
+[{
+  "id": 1,
+  "username": "johndoe",
+  "name": "John Doe",
+  "password": "1234",
+  "role": "admin"
+},
+{
+  "id": 2,
+  "username": "janedoe",
+  "name": "Jane Doe",
+  "password": "1234",
+  "role": "admin"
+},
+{
+  "id": 3,
+  "username": "cooluser",
+  "name": "Cool User",
+  "password": "1234",
+  "role": "user"
+},
+{
+  "id": 4,
+  "username": "cooldog",
+  "name": "Dog, M.D.",
+  "password": "Cool Dog",
+  "role": "user"
+},
+{
+  "id": 5,
+  "username": "derpson",
+  "name": "Derpson Smith",
+  "password": "1234",
+  "role": "user"
+},
+{
+  "id": 6,
+  "username": "admin",
+  "name": "Admin",
+  "password": "admin",
+  "role": "admin"
+},
+{
+  "id": 7,
+  "username": "user",
+  "name": "User",
+  "password": "user",
+  "role": "user"
+}]
