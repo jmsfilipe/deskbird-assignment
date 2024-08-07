@@ -1,1 +1,17 @@
-<router-outlet />
+<div id="content">
+  <mat-toolbar>
+    <h1>Deskbird assignment - Jorge</h1>
+    <div class="spacer"></div>
+    <button *ngIf="isLoggedIn$ | async" mat-icon-button aria-label="Logout" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer>
+    <p>deskbird assignment - jorge</p>
+  </footer>
+</div>

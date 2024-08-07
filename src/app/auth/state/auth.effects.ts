@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { catchError, map, switchMap, delay, tap } from 'rxjs/operators';
-import { login, loginSuccess, loginError } from './auth.actions';
+import { switchMap, delay, tap } from 'rxjs/operators';
+import { login, loginSuccess, loginError, logoutSuccess, logout } from './auth.actions';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -38,5 +38,16 @@ export class AuthEffects {
       })
     ),
     { dispatch: false } // this effect does not dispatch an action
+  );
+
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(logout),
+      tap(() => {
+        this.store.dispatch(logoutSuccess());
+        this.router.navigate(['/login']);
+      })
+    ),
+    { dispatch: false }
   );
 }

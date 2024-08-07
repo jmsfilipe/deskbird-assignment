@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, map, mergeMap, delay, tap } from 'rxjs/operators';
+import { catchError, map, mergeMap, delay, tap, switchMap } from 'rxjs/operators';
 import { UserService } from '../../user/services/user.service';
-import { loadUsers, loadUsersError, loadUsersSuccess } from './user.actions';
+import { editUser, editUserError, editUserSuccess, loadUsers, loadUsersError, loadUsersSuccess } from './user.actions';
 
 @Injectable()
 export class UserEffects {
@@ -19,6 +19,16 @@ export class UserEffects {
           catchError(error => of(loadUsersError({ error })))
         )
       )
+    )
+  );
+
+  editUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(editUser),
+      switchMap(action => {
+        return of(editUserSuccess({ user: action.user }));
+      }),
+      catchError(error => of(editUserError({ error: 'Failed to update user' })))
     )
   );
 }
